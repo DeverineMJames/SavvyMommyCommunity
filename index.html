@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Savvy Mommy Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #FAF5EE; font-family: 'DM Sans', sans-serif; color: #3D1A35; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Hero */
+  .hero { background: linear-gradient(160deg, #3D1A35 0%, #5C2450 100%); padding: 72px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 220px; height: 220px; background: rgba(196,151,74,0.06); border-radius: 0 0 0 220px; }
+  .hero::after  { content: ''; position: absolute; bottom: 0; left: 0; width: 160px; height: 160px; background: rgba(196,151,74,0.05); border-radius: 0 160px 0 0; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #C4974A; margin-bottom: 18px; font-weight: 500; }
+  .gold-line { width: 40px; height: 2px; background: linear-gradient(90deg, #C4974A, #E8C98A); border-radius: 2px; margin: 0 auto 24px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 7vw, 62px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+  .hero h1 em { color: #E8C98A; font-style: italic; }
+  .hero-sub { font-size: 16px; font-weight: 300; color: rgba(250,245,238,0.78); line-height: 1.75; max-width: 520px; margin: 0 auto 28px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 500px; margin: 0 auto; }
+  .tag { font-size: 11px; background: rgba(250,245,238,0.1); border: 1px solid rgba(250,245,238,0.2); border-radius: 100px; padding: 5px 15px; color: rgba(250,245,238,0.8); }
+
+  /* Sections */
+  .section { padding: 56px 40px 48px; max-width: 800px; margin: 0 auto; }
+  .section-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #C4974A; margin-bottom: 14px; font-weight: 500; }
+  .section-line { width: 36px; height: 2px; background: linear-gradient(90deg, #C4974A, #E8C98A); border-radius: 2px; margin: 16px 0 22px; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; line-height: 1.2; color: #3D1A35; }
+  h2 em { color: #7A3558; font-style: italic; }
+  .body-text { font-size: 15px; font-weight: 300; color: #4A2D40; line-height: 1.82; margin-bottom: 18px; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(196,151,74,0.25), transparent); margin: 0 40px; }
+
+  /* Quote box */
+  .quote-box { background: linear-gradient(135deg, rgba(196,151,74,0.08), rgba(122,53,88,0.06)); border: 1px solid rgba(196,151,74,0.22); border-radius: 14px; padding: 26px 28px; margin-top: 32px; }
+  .quote-box p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #7A3558; line-height: 1.6; }
+
+  /* Pillars */
+  .pillars { display: grid; gap: 18px; margin-top: 32px; }
+  .pillar { background: #fff; border-radius: 14px; padding: 26px 28px; border: 1px solid rgba(61,26,53,0.07); box-shadow: 0 4px 20px rgba(61,26,53,0.05); display: flex; gap: 18px; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+  .pillar:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,26,53,0.1); }
+  .pillar-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .pillar h3 { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #3D1A35; margin-bottom: 9px; }
+  .pillar p { font-size: 13.5px; font-weight: 300; color: #5A3A50; line-height: 1.75; }
+
+  /* For you list */
+  .for-you { display: grid; gap: 11px; margin-top: 28px; }
+  .for-you-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px; background: #fff; border-radius: 10px; border: 1px solid rgba(61,26,53,0.06); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #C4974A; flex-shrink: 0; margin-top: 6px; }
+  .for-you-item p { font-size: 14px; font-weight: 300; color: #4A2D40; line-height: 1.6; }
+
+  /* Why different - dark section */
+  .dark-section { background: linear-gradient(160deg, #3D1A35 0%, #5C2450 100%); padding: 56px 40px; }
+  .dark-section .section-inner { max-width: 800px; margin: 0 auto; }
+  .dark-section .section-eyebrow { color: #C4974A; }
+  .dark-section h2 { color: #fff; }
+  .why-list { display: grid; gap: 20px; margin-top: 28px; }
+  .why-item { border-left: 3px solid #C4974A; padding-left: 18px; }
+  .why-item strong { display: block; font-size: 13px; font-weight: 600; color: #E8C98A; margin-bottom: 6px; letter-spacing: 0.2px; }
+  .why-item p { font-size: 13.5px; font-weight: 300; color: rgba(250,245,238,0.78); line-height: 1.72; }
+
+  /* CTA */
+  .cta-section { padding: 60px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 18px; }
+  .cta-section p { font-size: 15px; font-weight: 300; color: #4A2D40; line-height: 1.8; max-width: 480px; margin: 0 auto 36px; }
+  .cta-btn { display: inline-block; background: linear-gradient(135deg, #3D1A35, #7A3558); border-radius: 100px; padding: 18px 50px; box-shadow: 0 8px 32px rgba(61,26,53,0.28); transition: transform 0.2s, box-shadow 0.2s; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(61,26,53,0.36); }
+  .cta-btn span { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; }
+  .footer-note { font-size: 12px; color: rgba(61,26,53,0.38); margin-top: 18px; letter-spacing: 0.3px; }
+
+  @media (max-width: 600px) {
+    .hero, .section, .dark-section { padding-left: 24px; padding-right: 24px; }
+    .divider { margin: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">Faith · Finance · Fitness</p>
+  <div class="gold-line"></div>
+  <h1>Welcome to<br /><em>Savvy Mommy</em></h1>
+  <p class="hero-sub">The community built for high-achieving moms who refuse to choose between being a great mother and building an extraordinary life.</p>
+  <div class="tags">
+    <span class="tag">Trading</span>
+    <span class="tag">Tech Careers</span>
+    <span class="tag">AI &amp; App Building</span>
+    <span class="tag">Financial Literacy</span>
+    <span class="tag">Generational Wealth</span>
+    <span class="tag">Real Talk</span>
+  </div>
+</div>
+
+<!-- Intro -->
+<div class="section">
+  <p class="section-eyebrow">This isn't what you think it is</p>
+  <h2>Savvy Mommy is not a mompreneur group.<br /><em>It's a life strategy for moms who want more.</em></h2>
+  <div class="section-line"></div>
+  <p class="body-text">I'm Deverine — a single mom, a Product Manager in tech, an active futures trader, a financial literacy educator, and someone who built a non-linear 20-year career through luxury retail, real estate, wellness, connected fitness, MarTech, FinTech, and asset management before landing exactly where I wanted to be.</p>
+  <p class="body-text">I didn't have a straight path. I didn't have a mentor handing me a roadmap. What I had was strategy, persistence, an obsessive desire to give my daughter a different life — and eventually, a blueprint that worked.</p>
+  <p class="body-text">Savvy Mommy is where I share all of it. The real stuff. The things you only learn by doing — and then figuring out how to do better.</p>
+  <div class="quote-box">
+    <p>"You've stayed up past 2am running numbers on a dream that hasn't paid off yet. Tabs open, notes everywhere, calculator out — strategizing how to give your family more. That 2am version of you deserves a community. This is it."</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Pillars -->
+<div class="section">
+  <p class="section-eyebrow">What lives inside this community</p>
+  <h2>Six pillars. One woman's lived experience.<br /><em>Everything you wish someone had told you sooner.</em></h2>
+  <div class="section-line"></div>
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-icon">💼</div><div><h3>Career Strategy from Real Lived Experience</h3><p>I spent 20 years zigzagging through luxury retail, real estate, wellness, beauty, connected fitness, MarTech, FinTech, and asset management before strategically landing in tech — with no CS degree. I'll show you how I positioned myself, how I got certified, and how you can translate any background into a tech career. This isn't theory. This is the blueprint I lived.</p></div></div>
+    <div class="pillar"><div class="pillar-icon">📈</div><div><h3>Futures Trading &amp; Financial Markets</h3><p>I trade MES, MNQ, ES, and NQ contracts using ICT killzone strategies and The Strat methodology. I have funded accounts and I'm building toward full-time trading. I break down what it actually looks like to learn markets as a mom — the wins, the setbacks, and the daily discipline it takes to build this skill for yourself and your family.</p></div></div>
+    <div class="pillar"><div class="pillar-icon">🧠</div><div><h3>AI Fluency &amp; App Building</h3><p>AI isn't coming for your job — it's coming for the job of the person who doesn't know how to use it. I'll teach you how to build with AI tools, create digital products, and make technology work for your household income. We're not spectators in this era. We're builders.</p></div></div>
+    <div class="pillar"><div class="pillar-icon">📚</div><div><h3>Financial Literacy — For You AND Your Kids</h3><p>I launched the Savvy Kids Financial Bootcamp because I refused to let my daughter grow up not knowing how money moves. You get access to the curriculum, tools, and frameworks I use to teach kids 8–12 about money — so you can learn alongside them and teach it with confidence.</p></div></div>
+    <div class="pillar"><div class="pillar-icon">📝</div><div><h3>Generational Wealth &amp; Legacy Planning</h3><p>A savings account is a start. A will, a trust, a funded trading account, and a financially literate child is a legacy. We talk about all of it here — because giving your kids a head start means more than a 529. It means building systems that protect them whether you're here or not.</p></div></div>
+    <div class="pillar"><div class="pillar-icon">🔥</div><div><h3>Real Talk. No Performance.</h3><p>I'm healing from burnout while still building. I'm a single mom who has had more hard days than easy ones. I didn't land here by accident — I clawed my way here. Everything I share is grounded in what actually works when the stakes are real and the margin for error is small.</p></div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Who it's for -->
+<div class="section">
+  <p class="section-eyebrow">This is for you if —</p>
+  <h2>You're done waiting for the right moment.<br /><em>The moment is now. Your kids are watching.</em></h2>
+  <div class="section-line"></div>
+  <div class="for-you">
+    <div class="for-you-item"><div class="dot"></div><p>You want to pivot into tech but don't know where to start</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You've been curious about trading but feel like it's not for people like you</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You want your kids to understand money before they're adults</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You're building something on the side but need real strategy, not fluff</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You've stayed up past 2am trying to figure out how to give your family more</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You're done waiting for someone to hand you a blueprint — you want to build one</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You want AI to work for you, not around you</p></div>
+    <div class="for-you-item"><div class="dot"></div><p>You want community that actually challenges you AND holds you up</p></div>
+  </div>
+</div>
+
+<!-- Why different -->
+<div class="dark-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Why this is different</p>
+    <h2>Most communities teach you to <em style="color:#E8C98A;">look</em> successful.<br />This one teaches you to <em style="color:#E8C98A;">be</em> it.</h2>
+    <div class="why-list">
+      <div class="why-item"><strong>No performance.</strong><p>I'm not curated here. I'm actively healing from burnout while still building. I share the setbacks alongside the wins because that's what actually helps.</p></div>
+      <div class="why-item"><strong>No gatekeeping.</strong><p>Everything I know about getting into tech, landing funded trading accounts, building AI tools, teaching kids financial literacy — I share it all. The strategy, the resources, the exact moves.</p></div>
+      <div class="why-item"><strong>No generic advice.</strong><p>This is grounded in 20 years of a real, non-linear career. Barneys to FinTech. Luxury real estate to futures trading. Peloton to asset management. I've lived across industries and I know how to help you translate your experience into opportunity.</p></div>
+      <div class="why-item"><strong>No solo journey.</strong><p>Single motherhood can be isolating. This community exists so you always have someone in your corner who actually gets it — who's in it with you.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p class="section-eyebrow" style="text-align:center;">You belong here</p>
+  <h2>You're not behind.<br /><em>You're exactly where your story needed you to be.</em></h2>
+  <div class="section-line" style="margin:18px auto 22px;"></div>
+  <p>The trading, the tech career, the financial literacy curriculum, the AI tools, the legacy planning — it's all here. And so is a community of moms doing it in real time, right alongside you.</p>
+  <a href="#" class="cta-btn"><span>Join the Savvy Mommy Community</span></a>
+  <p class="footer-note">Faith · Finance · Fitness · @SavvyMommy</p>
+</div>
+
+</body>
+</html>
